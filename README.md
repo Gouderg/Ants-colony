@@ -7,7 +7,7 @@ La quantité de phéromones dépends de la quantité et de la qualité de nourri
 
 https://www.youtube.com/watch?v=783ZtAF4j5g
 https://www.youtube.com/watch?v=yZ1rSASM2Rg
-
+https://www.youtube.com/watch?v=xpyKmjJuqhk
 https://mat.uab.cat/~alseda/MasterOpt/ACO_Intro.pdf
 
 ## Algorithm 

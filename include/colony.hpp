@@ -7,8 +7,8 @@
 
 class Colony {
     public:
-        const int SIZE_W = 600;
-        const int SIZE_H = 400;
+        const int SIZE_W = 1200;
+        const int SIZE_H = 900;
 
         // Constructor.
         Colony();
