@@ -11,7 +11,7 @@ Barrier::~Barrier() {
 // Add wall.
 void Barrier::addWall(const int x, const int y) {
     Wall* wall = new Wall(x, y);
-
+    std::cout << this->barrier.size() << std::endl;
     bool isHere = false;
     for (auto elt : this->barrier) {
         if (elt->getPos().getX() == x and elt->getPos().getY()) {

@@ -1,8 +1,9 @@
 #include "../include/ant.hpp"
 
-Ant::Ant(const int witdh, const int height) {
+Ant::Ant(const int x, const int y) {
     this->velocity = PVector(0,0);
-    this->position = PVector(witdh / 2, height / 2);
+    this->position = PVector(x, y);
+    this->isFeed = 0;
 }
 
 Ant::~Ant() {
@@ -10,5 +11,8 @@ Ant::~Ant() {
 }
 
 void Ant::draw(sf::RenderWindow *window) {
-
+    sf::RectangleShape fourmi(sf::Vector2f(getSizeW(),getSizeH()));
+    fourmi.setPosition(position.getX(), position.getY());
+    fourmi.setFillColor(sf::Color::Red);
+    window->draw(fourmi);
 }

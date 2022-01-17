@@ -51,3 +51,14 @@ Red: Pheromone with food
 Nombre de fourmi
 Min phéromone
 Max phéromone
+
+
+### Mettre en place un système de hitbox
+
+
+### Algo
+
+Vitesse des fourmis => (7, 7) => area 2,2
+
+Sélectionner les directions 8 (diagonales) puis appliquer la formule de proba pour trouver le chemin
+

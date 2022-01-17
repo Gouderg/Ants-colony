@@ -22,5 +22,5 @@ class Wall {
 
     private:
         PVector position;
-        static const int size = 10;
+        static const int size = 1;
 };

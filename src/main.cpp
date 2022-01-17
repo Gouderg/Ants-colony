@@ -29,7 +29,8 @@ int main(int argc, char const *argv[]) {
 		while (window.pollEvent(event)) {							// Wait event.
 			if(event.type == sf::Event::Closed) window.close();		// Close window.
 		}
-
+		
+		// Add wall.
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 			sf::Vector2i pos = sf::Mouse::getPosition(window);
 			barrier.addWall(pos.x, pos.y);
@@ -42,6 +43,8 @@ int main(int argc, char const *argv[]) {
 
 		barrier.draw(&window);
         colony.draw(&window);
+
+
 		window.display();
 
 	}
