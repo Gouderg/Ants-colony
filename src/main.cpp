@@ -12,9 +12,11 @@ int main(int argc, char const *argv[]) {
 	
 	srand(time(NULL));	
 
-	// Colony initialisation.
+	// Colony initialization.
     Colony colony = Colony();
 
+	// Barrier initilization
+	Barrier barrier = Barrier();
 
 	// Initialisation de l'antialiasing et de la fenêtre
 	sf::ContextSettings settings;
@@ -29,8 +31,8 @@ int main(int argc, char const *argv[]) {
 		}
 
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-			sf::Vector2i pos = sf::Mouse::getPosition();
-			Barrier(pos.x, pos.y);
+			sf::Vector2i pos = sf::Mouse::getPosition(window);
+			barrier.addWall(pos.x, pos.y);
 		}
 		
 
@@ -38,7 +40,7 @@ int main(int argc, char const *argv[]) {
 		window.clear(sf::Color(25,25,100,80));
 		
 
-		Barrier::draw(&window);
+		barrier.draw(&window);
         colony.draw(&window);
 		window.display();
 

@@ -2,22 +2,29 @@
 
 #include <iostream>
 #include <vector>
+#include <SFML/Graphics.hpp>
+#include <algorithm>
 
 #include "pvector.hpp"
-#include <SFML/Graphics.hpp>
+#include "wall.hpp"
 
 
 class Barrier {
     public: 
         // Constructor
-        Barrier(const int x, const int y);
+        Barrier();
 
         // Desctructor
         ~Barrier();
 
-        static void draw(sf::RenderWindow *window);
+        // Getter.
+        std::vector<Wall*> getBarrier() {return barrier;}
+
+
+        void addWall(const int x, const int y);
+        void draw(sf::RenderWindow *window);
 
     private:
-        static std::vector<PVector*> barrier;
+        std::vector<Wall*> barrier;
 
 };

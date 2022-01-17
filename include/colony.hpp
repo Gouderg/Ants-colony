@@ -13,10 +13,14 @@ class Colony {
         // Constructor.
         Colony();
 
+        // Other.
         void draw(sf::RenderWindow *window);
+
+        // Static function
+        static const int getColonySize() {return colony_size;}
     
     private:
-        const int colony_size = 10; // Size of colony in pixel
+        static const int colony_size = 10; // Size of colony in pixel
 
         PVector colony_center;
 };

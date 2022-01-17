@@ -6,5 +6,5 @@ PVector::PVector(const int x, const int y) {
 }
 
 PVector::~PVector() {
-    std::cout << "Pvector desctructor" << std::endl;
+    // std::cout << "Pvector desctructor" << std::endl;
 }
