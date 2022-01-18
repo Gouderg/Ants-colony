@@ -5,6 +5,7 @@
 
 
 #include "pvector.hpp"
+#include "colony.hpp"
 
 class Ant {
     public:
@@ -22,10 +23,14 @@ class Ant {
 
         // Other.
         void draw(sf::RenderWindow *window);
+
+        void update();
+        int checkBorder();
+
     
     private:
-        static const int size_ant_w = 4;
-        static const int size_ant_h = 4;
+        static const int size_ant_w = 10;
+        static const int size_ant_h = 10;
         static const int max_angle = 180;
 
 

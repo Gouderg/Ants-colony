@@ -17,6 +17,11 @@ void PVector::rotate(int angle, int x_pivot, int y_pivot) {
     this->y = (int) (y_pivot + (x*PVector::SIN(angle) + y*COS(angle)));
 }
 
+void PVector::add(PVector v) {
+    this->x += v.x;
+    this->y += v.y;
+}
+
 
 double PVector::COS(int angle) {
     return cos(angle * PI/180);

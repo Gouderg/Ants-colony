@@ -8,10 +8,14 @@
 #include "pvector.hpp"
 #include "ant.hpp"
 
+
+#define SIZE_W 1200
+#define SIZE_H 900
+
 class Colony {
     public:
-        const int SIZE_W = 1200;
-        const int SIZE_H = 900;
+        // static const int SIZE_W = 1200;
+        // static const int SIZE_H = 900;
 
         // Constructor.
         Colony();

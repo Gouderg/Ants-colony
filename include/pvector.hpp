@@ -27,6 +27,9 @@ class PVector {
         static double COS(int angle);
         static double SIN(int angle);
 
+        // Add.
+        void add(PVector v);
+
     private:
         int x, y;
 };

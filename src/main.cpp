@@ -6,15 +6,10 @@
 
 #include "../include/colony.hpp"
 #include "../include/barrier.hpp"
+#include "../include/ant.hpp"
 
 
 int main(int argc, char const *argv[]) {	
-
-	
-	PVector base = PVector(100, 100);
-	base.rotate(-45, 50, -50);
-	std::cout << base.getX() << ", " << base.getY() << std::endl;
-
 	
 	srand(time(NULL));	
 
@@ -22,12 +17,16 @@ int main(int argc, char const *argv[]) {
     Colony colony = Colony();
 
 	// Barrier initilization
-	Barrier barrier = Barrier();
+	// Barrier barrier = Barrier();
+
+
+	// Ants test.
+	Ant ant = Ant(SIZE_W / 2, SIZE_H / 2);
 
 	// Initialisation de l'antialiasing et de la fenêtre
 	sf::ContextSettings settings;
 	settings.antialiasingLevel = 8;
-	sf::RenderWindow window(sf::VideoMode(colony.SIZE_W,colony.SIZE_H), "Ants Colony", sf::Style::Default, settings);
+	sf::RenderWindow window(sf::VideoMode(SIZE_W,SIZE_H), "Ants Colony", sf::Style::Default, settings);
 	window.setFramerateLimit(60);
 
 	while (window.isOpen()) {
@@ -46,9 +45,10 @@ int main(int argc, char const *argv[]) {
 		// Clean screen.
 		window.clear(sf::Color(25,25,100,80));
 		
-
-		barrier.draw(&window);
-        colony.draw(&window);
+		ant.update();
+		ant.draw(&window);
+		// barrier.draw(&window);
+        // colony.draw(&window);
 
 
 		window.display();
