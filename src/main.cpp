@@ -9,6 +9,12 @@
 
 
 int main(int argc, char const *argv[]) {	
+
+	
+	PVector base = PVector(100, 100);
+	base.rotate(-45, 50, -50);
+	std::cout << base.getX() << ", " << base.getY() << std::endl;
+
 	
 	srand(time(NULL));	
 
@@ -31,10 +37,10 @@ int main(int argc, char const *argv[]) {
 		}
 		
 		// Add wall.
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-			sf::Vector2i pos = sf::Mouse::getPosition(window);
-			barrier.addWall(pos.x, pos.y);
-		}
+		// if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+		// 	sf::Vector2i pos = sf::Mouse::getPosition(window);
+		// 	barrier.addWall(pos.x, pos.y);
+		// }
 		
 
 		// Clean screen.

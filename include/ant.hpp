@@ -24,10 +24,18 @@ class Ant {
         void draw(sf::RenderWindow *window);
     
     private:
-        static const int size_ant_w = 5;
-        static const int size_ant_h = 2;
+        static const int size_ant_w = 4;
+        static const int size_ant_h = 4;
+        static const int max_angle = 180;
+
+
 
         PVector velocity;   // Speed.
         PVector position;   // Position.
+        // Direction angle.
+        // Sense angle.
+        // Sense direction.
+
+
         int isFeed;         // With or Without feed. 
 };  

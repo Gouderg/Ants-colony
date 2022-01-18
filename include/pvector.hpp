@@ -1,6 +1,9 @@
 #pragma once
 
 #include <iostream>
+#include <cmath>
+
+#define PI 3.14159265
 
 class PVector {
     public:
@@ -18,6 +21,11 @@ class PVector {
         // Setter.
         void setX(const int x) {this->x = x;}
         void setY(const int y) {this->y = y;}
+
+        // Other.
+        void rotate(int angle, int x_pivot, int y_pivot);
+        static double COS(int angle);
+        static double SIN(int angle);
 
     private:
         int x, y;

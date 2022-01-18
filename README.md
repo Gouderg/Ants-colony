@@ -10,6 +10,8 @@ https://www.youtube.com/watch?v=yZ1rSASM2Rg
 https://www.youtube.com/watch?v=xpyKmjJuqhk
 https://mat.uab.cat/~alseda/MasterOpt/ACO_Intro.pdf
 
+https://softologyblog.wordpress.com/2020/03/21/ant-colony-simulations/
+
 ## Algorithm 
 
 procedure ACO_MetaHeuristic is
