@@ -4,7 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 
-
+#include "constante.hpp"
 #include "pvector.hpp"
 #include "ant.hpp"
 
@@ -14,8 +14,6 @@
 
 class Colony {
     public:
-        // static const int SIZE_W = 1200;
-        // static const int SIZE_H = 900;
 
         // Constructor.
         Colony();
@@ -23,14 +21,10 @@ class Colony {
         // Other.
         void draw(sf::RenderWindow *window);
 
-        // Static function
-        static const int getColonySize() {return colony_size;}
-        static const int getNumberAnts() {return number_ants;}
+        // Getter.
+        std::vector<Ant*> getAnts() {return this->ants;}
     
     private:
-        static const int colony_size = 10;      // Size of colony in pixel.
-        static const int number_ants = 200;     // Number of ants.
-
         PVector colony_center;
         std::vector<Ant*> ants;
 };

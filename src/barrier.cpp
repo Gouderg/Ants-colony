@@ -11,7 +11,6 @@ Barrier::~Barrier() {
 // Add wall.
 void Barrier::addWall(const int x, const int y) {
     Wall* wall = new Wall(x, y);
-    std::cout << this->barrier.size() << std::endl;
     bool isHere = false;
     for (auto elt : this->barrier) {
         if (elt->getPos().getX() == x and elt->getPos().getY()) {
@@ -29,8 +28,8 @@ void Barrier::draw(sf::RenderWindow *window) {
     for (auto elt : getBarrier()) {
         PVector pos = elt->getPos();
 
-        sf::RectangleShape carre(sf::Vector2f(elt->getSize(),elt->getSize()));
-        carre.setPosition(pos.getX() - elt->getSize()/2, pos.getY() - elt->getSize()/2);
+        sf::RectangleShape carre(sf::Vector2f(SIZE_WALL,SIZE_WALL));
+        carre.setPosition(pos.getX() - SIZE_WALL/2, pos.getY() - SIZE_WALL/2);
         carre.setFillColor(sf::Color::Green);
         window->draw(carre);
     }   
