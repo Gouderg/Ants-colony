@@ -5,6 +5,7 @@
 
 #include "constante.hpp"
 #include "pvector.hpp"
+#include "food.hpp"
 
 class Ant {
     public:
@@ -30,9 +31,11 @@ class Ant {
 
         // Other.
         void draw(sf::RenderWindow *window);
-        void update();
+        void update(Food *foods);
         void checkBorder();
         int find_pheromone_trail();
+        int find_food(Food *foods);
+        int find_nest();
 
     
     private:
@@ -43,5 +46,5 @@ class Ant {
         int speed;            // Speed.
         int sense_angle;      // Sense angle.
         int sense_direction;  // Sense direction. 
-        int isFeed;         // With or Without feed. 
+        bool isFeed;           // With or Without feed. 
 };  

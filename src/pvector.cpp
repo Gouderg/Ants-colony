@@ -38,6 +38,9 @@ PVector PVector::add(PVector v1, PVector v2) {
     return v;
 }
 
+bool PVector::equal(PVector v1, PVector v2) {
+    return (v1.getX() == v2.getX() && v1.getY() == v2.getY());
+}
 
 
 PVector PVector::velocity(const int direction, const int speed) {

@@ -12,7 +12,9 @@ Ant::~Ant() {
 }
 
 
-void Ant::update() {
+void Ant::update(Food *foods) {
+
+    this->direction = (this->direction + find_food(foods)) % 360;
 
     // Search pheromone trail.
     this->direction = (this->direction + find_pheromone_trail()) % 360;
@@ -52,6 +54,34 @@ void Ant::checkBorder() {
     
     this->direction = (this->direction + turn) % 360;
 
+}
+
+int Ant::find_food(Food *foods) {
+    // If ant found the food.
+    PVector pos = PVector((int) this->position.getX(), (int) this->position.getY());
+    std::vector<PVector> test = foods->getFood();
+    for (int i = 0; i < test.size(); i++) {
+        if (PVector::equal(pos, test[i])) {
+            // std::cout << pos.getX() << ", " << pos.getY() << std::endl;
+            foods->pop(i);
+            return 180;
+        }
+    }
+
+
+    // if (std::find(foods->getFood().begin(), foods->getFood().end(), pos) == pos) {
+    //     this->isFeed = 1;
+    //     return 180;
+    // }
+    return 0;
+}
+
+int Ant::find_nest() {
+    // If ant found the nest.
+    if (true) {
+        this->isFeed = 0;
+        return 180;
+    }
 }
 
 int Ant::find_pheromone_trail() {

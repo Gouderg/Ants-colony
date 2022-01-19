@@ -8,6 +8,7 @@
 #include "../include/colony.hpp"
 #include "../include/barrier.hpp"
 #include "../include/ant.hpp"
+#include "../include/food.hpp"
 
 
 int main(int argc, char const *argv[]) {	
@@ -18,8 +19,12 @@ int main(int argc, char const *argv[]) {
 	// Colony initialization.
     Colony colony = Colony();
 
-	// Barrier initilization
+	// Barrier initilization.
 	Barrier barrier = Barrier();
+
+	// Food initialisation.
+	Food foods = Food();
+
 
 	// Initialisation de l'antialiasing et de la fenêtre.
 	sf::ContextSettings settings;
@@ -49,10 +54,6 @@ int main(int argc, char const *argv[]) {
 		
 		// Clean screen.
 		window.clear(sf::Color(25,25,100,80));
-		for (auto ant: colony.getAnts()) {
-			ant->update();
-			ant->draw(&window);
-		}
 
 		// Add wall.
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
@@ -60,6 +61,8 @@ int main(int argc, char const *argv[]) {
 			barrier.addWall(pos.x, pos.y);
 		}
 
+		// Update colony.
+		colony.update(&window, &foods);
 
 		// Display FPS.
 		count += 1;
@@ -72,6 +75,7 @@ int main(int argc, char const *argv[]) {
 		
 		// Draw all.
 		barrier.draw(&window);
+		foods.draw(&window);
         colony.draw(&window);
 		window.draw(fps);
 		

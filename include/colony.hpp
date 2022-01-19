@@ -6,11 +6,8 @@
 
 #include "constante.hpp"
 #include "pvector.hpp"
+#include "food.hpp"
 #include "ant.hpp"
-
-
-#define SIZE_W 1200
-#define SIZE_H 900
 
 class Colony {
     public:
@@ -20,6 +17,8 @@ class Colony {
 
         // Other.
         void draw(sf::RenderWindow *window);
+        void createAnts();
+        void update(sf::RenderWindow *window, Food *foods);
 
         // Getter.
         std::vector<Ant*> getAnts() {return this->ants;}
@@ -27,4 +26,5 @@ class Colony {
     private:
         PVector colony_center;
         std::vector<Ant*> ants;
+        int nb_ants;
 };
