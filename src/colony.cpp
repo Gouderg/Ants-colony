@@ -9,7 +9,7 @@ Colony::Colony(){
 
     // Create all Ants.
     for (int i = 0; i < NB_ANTS; i++) {
-        Ant* ant = new Ant(rand() % SIZE_W, rand() % SIZE_H, rand() % 4 - 2, rand() % 4 - 2);
+        Ant* ant = new Ant(rand() % SIZE_W, rand() % SIZE_H, rand() % 360, 2);
 
         ants.push_back(ant);
     }

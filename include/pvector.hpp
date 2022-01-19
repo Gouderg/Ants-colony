@@ -9,27 +9,29 @@ class PVector {
     public:
         // Constructor.
         PVector(){};
-        PVector(const int x, const int y);
+        PVector(const double x, const double y);
 
         // Destructor.
         ~PVector();
 
         // Getter.
-        int getX() const {return this->x;}
-        int getY() const {return this->y;}
+        double getX() const {return this->x;}
+        double getY() const {return this->y;}
 
         // Setter.
-        void setX(const int x) {this->x = x;}
-        void setY(const int y) {this->y = y;}
+        void setX(const double x) {this->x = x;}
+        void setY(const double y) {this->y = y;}
 
         // Other.
-        void rotate(int angle, int x_pivot, int y_pivot);
-        static double COS(int angle);
-        static double SIN(int angle);
+        void rotate(double angle, double x_pivot, double y_pivot);
+        static double COS(const double angle);
+        static double SIN(const double angle);
+        static PVector velocity(const int direction, const int speed);
 
         // Add.
         void add(PVector v);
+        static PVector add(PVector v1, PVector v2);
 
     private:
-        int x, y;
+        double x, y;
 };

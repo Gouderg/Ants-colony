@@ -9,8 +9,12 @@
 #define ANTS_SIZE_H 2
 
 // Information about the colony.
-#define NB_ANTS 200
+#define NB_ANTS 500
 #define SIZE_COLONY 10
 
-// Size of Wall
+// Size of Wall.
 #define SIZE_WALL 1
+
+// Ants information.
+#define SENSE_ANGLE 15
+#define SENSE_DISTANCE 5
