@@ -17,11 +17,13 @@ void Ant::update(Food *foods) {
     if (this->isFeed) {
         this->direction = (this->direction + find_nest()) % 360;
     } else {
+        // Search pheromone trail.
+        this->direction = (this->direction + find_pheromone_trail()) % 360;
+        
+        // Look for food.
         this->direction = (this->direction + find_food(foods)) % 360;
     }
 
-    // Search pheromone trail.
-    this->direction = (this->direction + find_pheromone_trail()) % 360;
 
     // Add velocity to position.
     PVector velocity = PVector::velocity(this->direction, this->speed);
@@ -37,22 +39,22 @@ void Ant::checkBorder() {
     int turn = 0;
 
     // Border right.
-    if (this->position.getX() + ANTS_SIZE_W/2 >= SIZE_W) {
+    if (this->position.getX() + ANTS_SIZE/2 >= SIZE_W) {
         turn = (this->direction < 180) ? 90 : -90;
     }
 
     // Border down.
-    if (this->position.getY() + ANTS_SIZE_H/2 >= SIZE_H) {
+    if (this->position.getY() + ANTS_SIZE/2 >= SIZE_H) {
         turn = (this->direction > 270) ? 90 : -90;
     }
 
     // Border left.
-    if (this->position.getX() - ANTS_SIZE_W/2 < 0) {
+    if (this->position.getX() - ANTS_SIZE/2 < 0) {
         turn = (this->direction > 180) ? 90 : -90;
     }
 
     // Border up.
-    if (this->position.getY() - ANTS_SIZE_H/2 < 0) {
+    if (this->position.getY() - ANTS_SIZE/2 < 0) {
         turn = (this->direction < 90) ? 90 : -90;
     }
     
@@ -61,22 +63,19 @@ void Ant::checkBorder() {
 }
 
 int Ant::find_food(Food *foods) {
+
     // If ant found the food.
     PVector pos = PVector((int) this->position.getX(), (int) this->position.getY());
     std::vector<PVector> test = foods->getFood();
     for (int i = 0; i < test.size(); i++) {
-        if (PVector::equal(pos, test[i])) {
+        if (PVector::equal_for_food(pos, test[i])) {
             // std::cout << pos.getX() << ", " << pos.getY() << std::endl;
             foods->pop(i);
+            this->isFeed = 1;
             return 180;
         }
     }
 
-
-    // if (std::find(foods->getFood().begin(), foods->getFood().end(), pos) == pos) {
-    //     this->isFeed = 1;
-    //     return 180;
-    // }
     return 0;
 }
 
@@ -89,7 +88,7 @@ int Ant::find_nest() {
         return 180;
     }
 
-
+    return 0;
 
 }
 
@@ -111,8 +110,8 @@ int Ant::find_pheromone_trail() {
 }
 
 void Ant::draw(sf::RenderWindow *window) {
-    sf::RectangleShape fourmi(sf::Vector2f(ANTS_SIZE_W,ANTS_SIZE_H));
-    fourmi.setPosition(position.getX() - ANTS_SIZE_W/2, position.getY() - ANTS_SIZE_H/2);
+    sf::RectangleShape fourmi(sf::Vector2f(ANTS_SIZE,ANTS_SIZE));
+    fourmi.setPosition(position.getX() - ANTS_SIZE/2, position.getY() - ANTS_SIZE/2);
     fourmi.setFillColor(sf::Color::Yellow);
     window->draw(fourmi);
 }

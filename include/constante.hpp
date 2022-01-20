@@ -2,26 +2,28 @@
 
 // Size of the screen.
 #define SIZE_W 1200
-#define SIZE_H 1000
+#define SIZE_H 1000              
 
-// Size of an Ants.
-#define ANTS_SIZE_W 2
-#define ANTS_SIZE_H 2
+// Ants information.    
+#define ANTS_SIZE 2                     // Ants size.
+#define SENSE_ANGLE 15                  // Angle of maximun rotation.
+#define SENSE_DISTANCE 5                // Distance of maximum detection.
+#define ANT_SPEED 1                     // Ants speed.
 
 // Information about the colony.
-#define NB_ANTS_CREATION 60
-#define NB_ANTS 300
-#define SIZE_COLONY 5
-#define OUT_SIZE_COLONY 2
+#define NB_ANTS_CREATION 60             // Nb ants in first frame.
+#define NB_ANTS 350                     // Total number of ants.
+#define SIZE_COLONY 5                   // Size of the circle represented the colony.
+#define OUT_SIZE_COLONY 2               // Size of the outline circle.
 
 // Size of Wall.
-#define SIZE_WALL 1
-
-// Ants information.
-#define SENSE_ANGLE 15
-#define SENSE_DISTANCE 5
+#define SIZE_WALL 1                     // Size of a wall.
 
 // Food information.
-#define SIZE_FOOD 10
+#define NB_FOOD 20                    // Nb food in a square.
+#define SIZE_FOOD_PIXEL 5               // Size of a pixel food.
 
 // Pheromone information.
+
+// PVector constante.
+#define PI 3.14159265

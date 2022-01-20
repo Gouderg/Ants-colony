@@ -2,8 +2,7 @@
 
 #include <iostream>
 #include <cmath>
-
-#define PI 3.14159265
+#include "constante.hpp"
 
 class PVector {
     public:
@@ -27,7 +26,7 @@ class PVector {
         static double COS(const double angle);
         static double SIN(const double angle);
         static PVector velocity(const int direction, const int speed);
-        static bool equal(PVector v1, PVector v2);
+        static bool equal_for_food(PVector v1, PVector v2);
 
         // Add.
         void add(PVector v);

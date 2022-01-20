@@ -5,29 +5,29 @@ Food::Food() {
     // Place square in each corner.
     
     // Top left.
-    for (int i = 0; i < SIZE_FOOD; i++) {
-        for (int j = 0; j < SIZE_FOOD; j++) {
+    for (int i = 0; i < NB_FOOD * SIZE_FOOD_PIXEL; i += SIZE_FOOD_PIXEL) {
+        for (int j = 0; j < NB_FOOD * SIZE_FOOD_PIXEL; j += SIZE_FOOD_PIXEL) {
             this->foods.push_back(PVector(i,j));
         }
     }
 
     // Top right.
-    for (int i = SIZE_W - SIZE_FOOD; i < SIZE_W; i++) {
-        for (int j = 0; j < SIZE_FOOD; j++) {
+    for (int i = SIZE_W - NB_FOOD * SIZE_FOOD_PIXEL; i < SIZE_W; i += SIZE_FOOD_PIXEL) {
+        for (int j = 0; j < NB_FOOD * SIZE_FOOD_PIXEL; j += SIZE_FOOD_PIXEL) {
             this->foods.push_back(PVector(i,j));
         }
     }
 
     // Bottom left.
-    for (int i = 0; i < SIZE_FOOD; i++) {
-        for (int j = SIZE_H - SIZE_FOOD; j < SIZE_H; j++) {
+    for (int i = 0; i < NB_FOOD * SIZE_FOOD_PIXEL ; i += SIZE_FOOD_PIXEL) {
+        for (int j = SIZE_H - NB_FOOD * SIZE_FOOD_PIXEL; j < SIZE_H; j += SIZE_FOOD_PIXEL) {
             this->foods.push_back(PVector(i,j));
         }
     }
 
     // Bottom right.
-    for (int i = SIZE_W - SIZE_FOOD; i < SIZE_W; i++) {
-        for (int j = SIZE_H - SIZE_FOOD; j < SIZE_H; j++) {
+    for (int i = SIZE_W - NB_FOOD * SIZE_FOOD_PIXEL; i < SIZE_W; i += SIZE_FOOD_PIXEL) {
+        for (int j = SIZE_H - NB_FOOD * SIZE_FOOD_PIXEL; j < SIZE_H; j += SIZE_FOOD_PIXEL) {
             this->foods.push_back(PVector(i,j));
         }
     }
@@ -40,7 +40,7 @@ void Food::pop(int index) {
 void Food::draw(sf::RenderWindow *window) {
 
     for (auto food: foods) {
-        sf::RectangleShape f_square(sf::Vector2f(1,1));
+        sf::RectangleShape f_square(sf::Vector2f(SIZE_FOOD_PIXEL, SIZE_FOOD_PIXEL));
         f_square.setPosition(food.getX(), food.getY());
         f_square.setFillColor(sf::Color::Green);
         window->draw(f_square);

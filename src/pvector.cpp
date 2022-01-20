@@ -38,8 +38,9 @@ PVector PVector::add(PVector v1, PVector v2) {
     return v;
 }
 
-bool PVector::equal(PVector v1, PVector v2) {
-    return (v1.getX() == v2.getX() && v1.getY() == v2.getY());
+bool PVector::equal_for_food(PVector v1, PVector v2) {
+    return (v1.getX() >= v2.getX() && v1.getX() <= v2.getX() + SIZE_FOOD_PIXEL && 
+            v1.getY() >= v2.getY() && v1.getY() <= v2.getY() + SIZE_FOOD_PIXEL);
 }
 
 
