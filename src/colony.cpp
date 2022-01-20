@@ -47,6 +47,8 @@ void Colony::draw(sf::RenderWindow *window) {
     window->draw(center);
 
     for (auto ant: ants) {
-        ant->draw(window);
+        if (ant->getIsFeed() == 0) {
+            ant->draw(window);
+        }
     }
 }

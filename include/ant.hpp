@@ -21,7 +21,9 @@ class Ant {
         int getSpeed() const {return this->speed;}
         int getSenseDirection() const {return this->sense_direction;}
         int getSenseAngle() const {return this->sense_angle;}
+        int getIsFeed() const {return this->isFeed;}
         PVector getPosition() const {return this->position;}
+
 
         // Setter.
         void setDirection(const int direction) {this->direction = direction;}

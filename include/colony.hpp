@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 
+#include "pheromone.hpp"
 #include "constante.hpp"
 #include "pvector.hpp"
 #include "food.hpp"
@@ -19,6 +20,8 @@ class Colony {
         void draw(sf::RenderWindow *window);
         void createAnts();
         void update(sf::RenderWindow *window, Food *foods);
+        void popPheromone(int index);
+        static void addPheromone(PVector p, int depot);
 
         // Getter.
         std::vector<Ant*> getAnts() {return this->ants;}
@@ -26,5 +29,6 @@ class Colony {
     private:
         PVector colony_center;
         std::vector<Ant*> ants;
+        std::vector<Pheromone*> pheromones;
         int nb_ants;
 };

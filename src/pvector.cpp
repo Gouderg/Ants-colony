@@ -25,6 +25,10 @@ double PVector::SIN(const double angle) {
     return sin(angle * PI/180);
 }
 
+double PVector::ARCTAN(const double x) {
+    return atan(x) * 180/PI;
+}
+
 void PVector::add(PVector v) {
     this->x += v.x;
     this->y += v.y;

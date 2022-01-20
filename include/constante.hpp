@@ -20,10 +20,12 @@
 #define SIZE_WALL 1                     // Size of a wall.
 
 // Food information.
-#define NB_FOOD 20                    // Nb food in a square.
+#define NB_FOOD 20                      // Nb food in a square.
 #define SIZE_FOOD_PIXEL 5               // Size of a pixel food.
 
 // Pheromone information.
+#define SIZE_PHEROMONE_DIFFUSION 3      // Size of the champ.
+
 
 // PVector constante.
 #define PI 3.14159265

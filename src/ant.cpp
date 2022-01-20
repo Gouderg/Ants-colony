@@ -4,7 +4,7 @@ Ant::Ant(const int x, const int y, const int direction, const int speed) {
     this->direction = direction;
     this->speed = speed;
     this->position = PVector(x, y);
-    this->isFeed = 0;
+    this->isFeed = 1;
 }
 
 Ant::~Ant() {
@@ -69,7 +69,6 @@ int Ant::find_food(Food *foods) {
     std::vector<PVector> test = foods->getFood();
     for (int i = 0; i < test.size(); i++) {
         if (PVector::equal_for_food(pos, test[i])) {
-            // std::cout << pos.getX() << ", " << pos.getY() << std::endl;
             foods->pop(i);
             this->isFeed = 1;
             return 180;
@@ -87,7 +86,18 @@ int Ant::find_nest() {
         this->isFeed = 0;
         return 180;
     }
+    
+    // Found angle between nest and ants.
+    PVector v;
+    if (this->position.getX() > SIZE_W/2) {
+        v = PVector(this->position.getX() - SIZE_W/2, this->position.getY() - SIZE_H/2);
+    } else {
+        v = PVector(SIZE_W/2 - this->position.getX(), SIZE_H/2 - this->position.getY());
+    }
 
+
+
+    int angle = PVector::ARCTAN((SIZE_H/2 - this->position.getY()) / (SIZE_W/2 - this->position.getX()));
     return 0;
 
 }

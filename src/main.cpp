@@ -56,10 +56,10 @@ int main(int argc, char const *argv[]) {
 		window.clear(sf::Color(25,25,100,80));
 
 		// Add wall.
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-			sf::Vector2i pos = sf::Mouse::getPosition(window);
-			barrier.addWall(pos.x, pos.y);
-		}
+		// if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+		// 	sf::Vector2i pos = sf::Mouse::getPosition(window);
+		// 	barrier.addWall(pos.x, pos.y);
+		// }
 
 		// Update colony.
 		colony.update(&window, &foods);
