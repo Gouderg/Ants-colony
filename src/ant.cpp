@@ -14,7 +14,11 @@ Ant::~Ant() {
 
 void Ant::update(Food *foods) {
 
-    this->direction = (this->direction + find_food(foods)) % 360;
+    if (this->isFeed) {
+        this->direction = (this->direction + find_nest()) % 360;
+    } else {
+        this->direction = (this->direction + find_food(foods)) % 360;
+    }
 
     // Search pheromone trail.
     this->direction = (this->direction + find_pheromone_trail()) % 360;
@@ -77,11 +81,16 @@ int Ant::find_food(Food *foods) {
 }
 
 int Ant::find_nest() {
+
     // If ant found the nest.
-    if (true) {
+    if (this->position.getX() >= SIZE_W/2 - SIZE_COLONY && this->position.getX() <= SIZE_W/2 + SIZE_COLONY && 
+        this->position.getY() >= SIZE_H/2 - SIZE_COLONY && this->position.getY() <= SIZE_H/2 + SIZE_COLONY) {
         this->isFeed = 0;
         return 180;
     }
+
+
+
 }
 
 int Ant::find_pheromone_trail() {
