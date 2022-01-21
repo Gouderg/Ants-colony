@@ -12,7 +12,7 @@
 
 
 int main(int argc, char const *argv[]) {	
-	
+
 	srand(time(NULL));	
 	sf::Clock clock;
 

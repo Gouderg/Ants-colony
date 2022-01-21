@@ -12,7 +12,7 @@
 
 // Information about the colony.
 #define NB_ANTS_CREATION 60             // Nb ants in first frame.
-#define NB_ANTS 350                     // Total number of ants.
+#define NB_ANTS 450                     // Total number of ants.
 #define SIZE_COLONY 5                   // Size of the circle represented the colony.
 #define OUT_SIZE_COLONY 2               // Size of the outline circle.
 

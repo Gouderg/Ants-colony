@@ -6,6 +6,7 @@
 #include "constante.hpp"
 #include "pvector.hpp"
 #include "food.hpp"
+#include "pheromone.hpp"
 
 class Ant {
     public:
@@ -33,11 +34,11 @@ class Ant {
 
         // Other.
         void draw(sf::RenderWindow *window);
-        void update(Food *foods);
+        void update(Food *foods, std::vector<Pheromone*> *phe);
         void checkBorder();
-        int find_pheromone_trail();
+        int find_pheromone_trail(std::vector<Pheromone*> *phe);
         int find_food(Food *foods);
-        int find_nest();
+        int find_nest(std::vector<Pheromone*> *phe);
 
     
     private:

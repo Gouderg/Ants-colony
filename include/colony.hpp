@@ -20,7 +20,6 @@ class Colony {
         void draw(sf::RenderWindow *window);
         void createAnts();
         void update(sf::RenderWindow *window, Food *foods);
-        void popPheromone(int index);
         static void addPheromone(PVector p, int depot);
 
         // Getter.

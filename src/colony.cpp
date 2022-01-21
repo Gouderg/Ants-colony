@@ -29,11 +29,25 @@ void Colony::update(sf::RenderWindow *window, Food *foods) {
         this->nb_ants += 1;
     }
 
+
     // Update each ants.
     for (auto ant: getAnts()) {
-		ant->update(foods);
+		ant->update(foods, &this->pheromones);
 		ant->draw(window);
 	}
+    
+    // Decrease pheromone trail intensity with time.
+
+    for (int i = this->pheromones.size()-1; i >= 0; i-- ) {
+        int dep = this->pheromones[i]->getDepot();
+        dep -= 1;
+
+        if (dep == 0) {
+            this->pheromones.erase(this->pheromones.begin()+i);
+        } else {
+            this->pheromones[i]->setDepot(dep);
+        }
+    }
 }
 
 
@@ -47,8 +61,10 @@ void Colony::draw(sf::RenderWindow *window) {
     window->draw(center);
 
     for (auto ant: ants) {
-        if (ant->getIsFeed() == 0) {
-            ant->draw(window);
-        }
+        ant->draw(window);
+    }
+
+    for (auto phe: pheromones) {
+        phe->draw(window);
     }
 }
