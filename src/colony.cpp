@@ -38,11 +38,11 @@ void Colony::update(sf::RenderWindow *window, Food *foods) {
     
     // Decrease pheromone trail intensity with time.
 
-    for (int i = this->pheromones.size()-1; i >= 0; i-- ) {
+    for (int i = this->pheromones.size()-1; i >= 0; i--) {
         int dep = this->pheromones[i]->getDepot();
-        dep -= 1;
+        dep -= PHE_DECREASE;
 
-        if (dep == 0) {
+        if (dep <= 0) {
             this->pheromones.erase(this->pheromones.begin()+i);
         } else {
             this->pheromones[i]->setDepot(dep);

@@ -45,6 +45,7 @@ class Ant {
         static const int max_angle = 180;
 
         PVector position;     // Position.
+        double angle;         // Which direction to see.
         int direction;        // Direction.
         int speed;            // Speed.
         int sense_angle;      // Sense angle.

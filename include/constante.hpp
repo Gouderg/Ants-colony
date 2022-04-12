@@ -8,7 +8,7 @@
 #define ANTS_SIZE 2                     // Ants size.
 #define SENSE_ANGLE 15                  // Angle of maximun rotation.
 #define SENSE_DISTANCE 5                // Distance of maximum detection.
-#define ANT_SPEED 1                     // Ants speed.
+#define ANT_SPEED 2                     // Ants speed.
 
 // Information about the colony.
 #define NB_ANTS_CREATION 60             // Nb ants in first frame.
@@ -24,7 +24,11 @@
 #define SIZE_FOOD_PIXEL 5               // Size of a pixel food.
 
 // Pheromone information.
-#define SIZE_PHEROMONE_DIFFUSION 3      // Size of the champ.
+#define PHE_DIFFUSION 3      // Size of the champ.        
+#define PHE_MAX 255
+#define PHE_INCREASE 2
+#define PHE_DECREASE 1
+#define PHE_INIT 10
 
 
 // PVector constante.

@@ -16,19 +16,20 @@ void Ant::update(Food *foods, std::vector<Pheromone*> *phe) {
 
     // If ants carry food.
     if (this->isFeed == 1) {
-        this->direction = (this->direction + find_nest(phe) + 360) % 360;
+        this->direction = (find_nest(phe) + 360 + rand() % 3) % 360;
     } else {
         // Search pheromone trail.
         this->direction = (this->direction + find_pheromone_trail(phe) + 360) % 360;
-        
+
         // Look for food.
         this->direction = (this->direction + find_food(foods) + 360) % 360;
-
-        // Add velocity to position.
-        PVector velocity = PVector::velocity(this->direction, this->speed);
-        this->position.add(velocity);
     }
 
+
+    // Add velocity to position.
+    PVector velocity = PVector::velocity(this->direction, this->speed);
+    this->angle = velocity.headings2D();
+    this->position.add(velocity);
 
     // Check border.
     checkBorder();
@@ -95,32 +96,28 @@ int Ant::find_nest(std::vector<Pheromone*> *phe) {
         if ((int) (*phe)[i]->getPosition().getX() == (int) this->position.getX() && (int) (*phe)[i]->getPosition().getY() == (int) this->position.getY()) {
             int dep = (*phe)[i]->getDepot();
             if (dep + 10 > 255) {
-                (*phe)[i]->setDepot(255);
+                (*phe)[i]->setDepot(PHE_MAX);
             } else {
-                (*phe)[i]->setDepot(dep + 10);
+                (*phe)[i]->setDepot(dep + PHE_INCREASE);
             }
             isNotIn = false;
             break;
         }
     }
-    // Sinon on le cree
+    // Sinon on le crée
     if (isNotIn) {
         PVector p = PVector(this->position.getX(), this->position.getY());
-        (*phe).push_back(new Pheromone(p, 110));
+        (*phe).push_back(new Pheromone(p, PHE_INIT));
     }
 
     
     
     // Found angle between nest and ants.
-    int x = (this->position.getX() >= SIZE_W/2) ? -3 : 3;
-    int y = (this->position.getY() >= SIZE_H/2) ? -3 : 3;
+ 
 
-    this->position.setX(this->position.getX() + x);
-    this->position.setY(this->position.getY() + y);
+    // int proba[3] = {-1, 0, 1};
 
-    int proba[3] = {-1, 0, 1};
-
-    return proba[rand() % 3];
+    return atan2(SIZE_H/2 - this->position.getY(), SIZE_W/2 - this->position.getX()) * 180/PI;
 
 }
 
@@ -161,8 +158,18 @@ int Ant::find_pheromone_trail(std::vector<Pheromone*> *phe) {
 }
 
 void Ant::draw(sf::RenderWindow *window) {
-    sf::RectangleShape fourmi(sf::Vector2f(ANTS_SIZE,ANTS_SIZE));
+    // sf::RectangleShape fourmi(sf::Vector2f(ANTS_SIZE,ANTS_SIZE));
+
+    sf::ConvexShape fourmi;
+    fourmi.setPointCount(3);
+    fourmi.setPoint(0, sf::Vector2f(ANTS_SIZE, 0));
+    fourmi.setPoint(1, sf::Vector2f(-ANTS_SIZE, -ANTS_SIZE/2));
+    fourmi.setPoint(2, sf::Vector2f(-ANTS_SIZE, ANTS_SIZE/2));
+
+
+
     fourmi.setPosition(position.getX() - ANTS_SIZE/2, position.getY() - ANTS_SIZE/2);
+    fourmi.setRotation(this->angle);
     fourmi.setFillColor(sf::Color::Yellow);
     window->draw(fourmi);
 }
