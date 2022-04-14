@@ -17,7 +17,7 @@
 #define OUT_SIZE_COLONY 2               // Size of the outline circle.
 
 // Size of Wall.
-#define SIZE_WALL 1                     // Size of a wall.
+#define SIZE_WALL 20                     // Size of a wall.
 
 // Food information.
 #define NB_FOOD 20                      // Nb food in a square.

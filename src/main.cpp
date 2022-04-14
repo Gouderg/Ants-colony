@@ -65,7 +65,7 @@ int main(int argc, char const *argv[]) {
 		colony.update(&window, &foods);
 
 		// Display FPS.
-		count += 1;
+        count += 1;
 		sf::Time frameTime = clock.getElapsedTime();
 		if (frameTime.asSeconds() >= 1) {
 			fps.setString("FPS: "+ std::to_string(count));

@@ -1,5 +1,13 @@
 # Ant Colony Optimisation
 
+## Planning
+
+- [ ] Phéromone des fourmis
+- [ ] Remplacer par un vecteur vitesse
+- [ ] Revoir système de rebond sur les murs
+- [ ] Mise en place des murs à des coordonnées fixe (Grille)
+
+
 But: Trouver de la nourriture
 
 Quand une fourmi trouve de la nourriture, elle rentre en laissant des phéromones derrières elles.

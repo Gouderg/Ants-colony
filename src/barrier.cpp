@@ -10,15 +10,17 @@ Barrier::~Barrier() {
 
 // Add wall.
 void Barrier::addWall(const int x, const int y) {
-    Wall* wall = new Wall(x, y);
     bool isHere = false;
     for (auto elt : this->barrier) {
-        if (elt->getPos().getX() == x and elt->getPos().getY()) {
+        if (x > elt->getPos().getX() - SIZE_WALL && x < elt->getPos().getX() + SIZE_WALL && y > elt->getPos().getY() - SIZE_WALL && y < elt->getPos().getY() + SIZE_WALL) {
+            
+            std::cout << "Hello" << std::endl;
             isHere = true;
             break;
         }
     }
-    if (not(isHere)) {
+    if (!isHere) {
+        Wall* wall = new Wall(x, y);
         this->barrier.push_back(wall);
     }
 
