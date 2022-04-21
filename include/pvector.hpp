@@ -61,8 +61,7 @@ class PVector {
         static double angleBetween(PVector v1, PVector v2);                         // Return the angle between two PVector.
         static PVector scalarProjection(PVector v1, PVector v2);                    // Return the scalar Projection.
         static PVector rotate2D(PVector v1, double theta);                          // Return the rotate Pvector.
-        static double angleWith(PVector ref_pos, PVector target, double theta);   // Return the angle between the current PVector and another one.
-        static PVector velocity(const int direction, const int speed);
+        static double angleWith(PVector ref_pos, PVector target, double theta);     // Return the angle between the current PVector and another one.
         static bool equal_for_food(PVector v1, PVector v2);
 
     private:

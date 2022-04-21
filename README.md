@@ -2,10 +2,21 @@
 
 ## Planning
 
+- [X] Remplacer par un vecteur vitesse
+- [X] Revoir système de rebond sur les murs
+
 - [ ] Phéromone des fourmis
-- [ ] Remplacer par un vecteur vitesse
-- [ ] Revoir système de rebond sur les murs
-- [ ] Mise en place des murs à des coordonnées fixe (Grille)
+    - Tableau 2D avec des array de array 
+    - Nombre de case égale au nombre WIDTH HEIGHT   
+    - Algorhitme de recherche
+
+- [ ] Wall
+    - Tableau 2D de la taille de l'écran divisé par la taille des murs (Permet un positionnement parfait des murs)
+    - Système de collision des fourmis.
+
+- [ ] Food
+    - Remplacer la nourriture par un tableau 2D qui se divise comme les murs avec la taille de la nourriture.
+
 
 
 But: Trouver de la nourriture
@@ -58,18 +69,5 @@ White: Ants
 Blue: Pheromone without food
 Red: Pheromone with food
 
-## Variable global
-Nombre de fourmi
-Min phéromone
-Max phéromone
-
 
 ### Mettre en place un système de hitbox
-
-
-### Algo
-
-Vitesse des fourmis => (7, 7) => area 2,2
-
-Sélectionner les directions 8 (diagonales) puis appliquer la formule de proba pour trouver le chemin
-

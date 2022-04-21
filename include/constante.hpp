@@ -8,7 +8,8 @@
 #define ANTS_SIZE 2                     // Ants size.
 #define SENSE_ANGLE 15                  // Angle of maximun rotation.
 #define SENSE_DISTANCE 5                // Distance of maximum detection.
-#define ANT_SPEED 2                     // Ants speed.
+#define ANT_MAX_SPEED 2                 // Max speed for ants.
+#define ANT_MAX_FORCE 0.5               // Max ants force apply.
 
 // Information about the colony.
 #define NB_ANTS_CREATION 60             // Nb ants in first frame.

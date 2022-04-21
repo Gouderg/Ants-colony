@@ -263,8 +263,3 @@ bool PVector::equal_for_food(PVector v1, PVector v2) {
     return (v1.getX() >= v2.getX() && v1.getX() <= v2.getX() + SIZE_FOOD_PIXEL && 
             v1.getY() >= v2.getY() && v1.getY() <= v2.getY() + SIZE_FOOD_PIXEL);
 }
-
-
-PVector PVector::velocity(const int direction, const int speed) {
-    return PVector(speed * cos(direction * M_PI/180), speed * sin(direction * M_PI/180));
-}

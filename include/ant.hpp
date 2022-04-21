@@ -12,14 +12,12 @@ class Ant {
     public:
         
         // Constructor.
-        Ant(const int x, const int y, const int direction, const int speed);
+        Ant(const int x_pos, const int y_pos, const int x_vel, const int y_vel);
 
         // Destructor.
         ~Ant();
 
         // Getter.
-        int getDirection() const {return this->direction;}
-        int getSpeed() const {return this->speed;}
         int getSenseDirection() const {return this->sense_direction;}
         int getSenseAngle() const {return this->sense_angle;}
         int getIsFeed() const {return this->isFeed;}
@@ -27,8 +25,6 @@ class Ant {
 
 
         // Setter.
-        void setDirection(const int direction) {this->direction = direction;}
-        void setSpeed(const int speed) {this->speed = speed;}
         void setSenseDirection(const int direction) {this->sense_direction = direction;}
         void setSenseAngle(const int angle) {this->sense_angle = angle;}
 
@@ -47,8 +43,6 @@ class Ant {
         PVector position;     // Position.
         PVector velocity;     // Velocity.
         double angle;         // Which direction to see.
-        int direction;        // Direction.
-        int speed;            // Speed.
         int sense_angle;      // Sense angle.
         int sense_direction;  // Sense direction. 
         bool isFeed;           // With or Without feed. 

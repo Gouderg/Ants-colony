@@ -9,7 +9,7 @@ Colony::Colony(){
 
     // Create all Ants.
     for (int i = 0; i < NB_ANTS_CREATION; i++) {
-        Ant* ant = new Ant(rand() % 50 + SIZE_W/2 - 25, rand() % 50 + SIZE_H/2 - 25, rand() % 360, ANT_SPEED);
+        Ant* ant = new Ant(rand() % 50 + SIZE_W/2 - 25, rand() % 50 + SIZE_H/2 - 25, rand() % 5 - 2, rand() % 5 - 2);
         ants.push_back(ant);
     }
 
@@ -17,7 +17,7 @@ Colony::Colony(){
 }
 
 void Colony::createAnts() {
-    Ant* ant = new Ant(SIZE_W/2, SIZE_H/2, rand() % 360, 2);
+    Ant* ant = new Ant(SIZE_W/2, SIZE_H/2, rand() % 5 - 2, rand() % 5 - 2);
     ants.push_back(ant);
 }
 
@@ -37,7 +37,6 @@ void Colony::update(sf::RenderWindow *window, Food *foods) {
 	}
     
     // Decrease pheromone trail intensity with time.
-
     for (int i = this->pheromones.size()-1; i >= 0; i--) {
         int dep = this->pheromones[i]->getDepot();
         dep -= PHE_DECREASE;
