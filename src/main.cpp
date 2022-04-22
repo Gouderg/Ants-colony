@@ -6,7 +6,7 @@
 #include <string> 
 
 #include "../include/colony.hpp"
-#include "../include/barrier.hpp"
+#include "../include/wall.hpp"
 #include "../include/ant.hpp"
 #include "../include/food.hpp"
 
@@ -20,7 +20,7 @@ int main(int argc, char const *argv[]) {
     Colony colony = Colony();
 
 	// Barrier initilization.
-	Barrier barrier = Barrier();
+	Wall wall = Wall();
 
 	// Food initialisation.
 	Food foods = Food();
@@ -56,13 +56,13 @@ int main(int argc, char const *argv[]) {
 		window.clear(sf::Color(25,25,100,80));
 
 		// Add wall.
-		// if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-		// 	sf::Vector2i pos = sf::Mouse::getPosition(window);
-		// 	barrier.addWall(pos.x, pos.y);
-		// }
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+			sf::Vector2i pos = sf::Mouse::getPosition(window);
+			wall.addWall(pos.x, pos.y);
+		}
 
 		// Update colony.
-		colony.update(&window, &foods);
+		colony.update(&window, &foods, wall);
 
 		// Display FPS.
         count += 1;
@@ -74,7 +74,7 @@ int main(int argc, char const *argv[]) {
 		}
 		
 		// Draw all.
-		barrier.draw(&window);
+		wall.draw(&window);
 		foods.draw(&window);
         colony.draw(&window);
 		window.draw(fps);

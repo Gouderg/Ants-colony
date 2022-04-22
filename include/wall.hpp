@@ -1,25 +1,29 @@
 #pragma once
 
 #include <iostream>
+#include <vector>
+#include <SFML/Graphics.hpp>
+#include <algorithm>
 
-#include "constante.hpp"
 #include "pvector.hpp"
 
-class Wall {
-    public:
-        // Constructor
-        Wall(const int x, const int y);
 
-        // Destructor
+class Wall {
+    public: 
+        // Constructor
+        Wall();
+
+        // Desctructor
         ~Wall();
 
         // Getter.
-        PVector getPos() const {return this->position;}
+        int getWall(const int x, const int y) {return walls[y][x];}
 
-        // Setter.
-        void setPos(const PVector pos) {this->position = pos;}
 
+        void addWall(int x, int y);
+        void draw(sf::RenderWindow *window);
 
     private:
-        PVector position;
+        int walls[(int) SIZE_H / SIZE_WALL][(int) SIZE_W / SIZE_WALL];
+
 };

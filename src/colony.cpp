@@ -21,7 +21,7 @@ void Colony::createAnts() {
     ants.push_back(ant);
 }
 
-void Colony::update(sf::RenderWindow *window, Food *foods) {
+void Colony::update(sf::RenderWindow *window, Food *foods, Wall walls) {
 
     // Add new ants which time.
     if (this->nb_ants < NB_ANTS) {
@@ -32,7 +32,7 @@ void Colony::update(sf::RenderWindow *window, Food *foods) {
 
     // Update each ants.
     for (auto ant: getAnts()) {
-		ant->update(foods, &this->pheromones);
+		ant->update(foods, &this->pheromones, walls);
 		ant->draw(window);
 	}
     

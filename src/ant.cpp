@@ -11,7 +11,7 @@ Ant::~Ant() {
 }
 
 
-void Ant::update(Food *foods, std::vector<Pheromone*> *phe) {
+void Ant::update(Food *foods, std::vector<Pheromone*> *phe, Wall walls) {
 
     // Random acceleration.
     PVector acc = PVector(rand() % 5 - 2, rand() % 5 - 2);
@@ -42,6 +42,9 @@ void Ant::update(Food *foods, std::vector<Pheromone*> *phe) {
 
     // Check border.
     checkBorder();
+
+    // Check walls.
+    checkWall(walls);
 }
 
 
@@ -69,6 +72,16 @@ void Ant::checkBorder() {
         this->velocity.mulY(-1);
     }
 
+}
+
+void Ant::checkWall(Wall walls) {
+
+    int x = this->position.getX() * (SIZE_W / SIZE_WALL) / SIZE_W;
+    int y = this->position.getY() * (SIZE_H / SIZE_WALL) / SIZE_H;
+
+    if (walls.getWall(x, y) == 1) {
+        this->velocity.mul(-1);
+    }
 }
 
 int Ant::find_food(Food *foods) {
@@ -129,7 +142,7 @@ int Ant::find_nest(std::vector<Pheromone*> *phe) {
 }
 
 int Ant::find_pheromone_trail(std::vector<Pheromone*> *phe) {
-    
+    return 0;
 }
 
 void Ant::draw(sf::RenderWindow *window) {

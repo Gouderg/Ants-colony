@@ -9,6 +9,7 @@
 #include "pvector.hpp"
 #include "food.hpp"
 #include "ant.hpp"
+#include "wall.hpp"
 
 class Colony {
     public:
@@ -19,7 +20,7 @@ class Colony {
         // Other.
         void draw(sf::RenderWindow *window);
         void createAnts();
-        void update(sf::RenderWindow *window, Food *foods);
+        void update(sf::RenderWindow *window, Food *foods, Wall walls);
         static void addPheromone(PVector p, int depot);
 
         // Getter.

@@ -7,6 +7,7 @@
 #include "pvector.hpp"
 #include "food.hpp"
 #include "pheromone.hpp"
+#include "wall.hpp"
 
 class Ant {
     public:
@@ -30,8 +31,9 @@ class Ant {
 
         // Other.
         void draw(sf::RenderWindow *window);
-        void update(Food *foods, std::vector<Pheromone*> *phe);
+        void update(Food *foods, std::vector<Pheromone*> *phe, Wall walls);
         void checkBorder();
+        void checkWall(Wall walls);
         int find_pheromone_trail(std::vector<Pheromone*> *phe);
         int find_food(Food *foods);
         int find_nest(std::vector<Pheromone*> *phe);
