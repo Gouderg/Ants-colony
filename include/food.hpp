@@ -1,12 +1,8 @@
 #pragma once
 
 #include <iostream>
-#include <vector>
 #include <SFML/Graphics.hpp>
 
-
-
-#include "pvector.hpp"
 #include "constante.hpp"
 
 
@@ -17,14 +13,13 @@ class Food {
         Food();
     
         // Getter.
-        std::vector<PVector> getFood() const {return this->foods;}
-
+        uint8_t getFood(const int x, const int y) {return this->foods[y][x];}
 
         // Other.
-        void pop(int index);
+        void add(const int x, const int y);
         void draw(sf::RenderWindow *window);
     
     private:
-        std::vector<PVector> foods;
+        uint8_t foods[(int) SIZE_H / SIZE_FOOD_PIXEL][(int) SIZE_W / SIZE_FOOD_PIXEL];
 
 };

@@ -61,6 +61,12 @@ int main(int argc, char const *argv[]) {
 			wall.addWall(pos.x, pos.y);
 		}
 
+		// Add food.
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Right)) {
+			sf::Vector2i pos = sf::Mouse::getPosition(window);
+			foods.add(pos.x, pos.y);
+		}
+
 		// Update colony.
 		colony.update(&window, &foods, wall);
 

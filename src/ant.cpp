@@ -86,17 +86,6 @@ void Ant::checkWall(Wall walls) {
 
 int Ant::find_food(Food *foods) {
 
-    // If ant found the food.
-    PVector position = PVector((int) this->position.getX(), (int) this->position.getY());
-    std::vector<PVector> test = foods->getFood();
-    for (int i = 0; i < test.size(); i++) {
-        if (PVector::equal_for_food(position, test[i])) {
-            foods->pop(i);
-            this->isFeed = 1;
-            return 180;
-        }
-    }
-
     return 0;
 }
 
