@@ -10,15 +10,15 @@ class Pheromone {
 
     public:
         // Constructor.
-        Pheromone(const PVector p, const int depot);
+        Pheromone();
 
         // Getter.
-        PVector getPosition() {return this->position;}
-        int getDepot() {return this->depot;}
+        int getPheromone(const int x, const int y) {return this->pheromones[y][x];}
 
         // Setter.
-        void setPositon(const PVector p) {this->position = p;}
-        void setDepot(const int depot) {this->depot = depot;}
+        void addPheromone(const int x, const int y) {this->pheromones[y][x] += PHE_INCREASE;}
+        void subPheromone(const int x, const int y) {this->pheromones[y][x] -= PHE_DECREASE;}
+
 
         // Other.
         void draw(sf::RenderWindow *window);
@@ -26,7 +26,5 @@ class Pheromone {
         
 
     private:
-        PVector position;
-        int depot;
-
+        int pheromones[SIZE_H][SIZE_W];
 };  

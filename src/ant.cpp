@@ -11,7 +11,7 @@ Ant::~Ant() {
 }
 
 
-void Ant::update(Food *foods, std::vector<Pheromone*> *phe, Wall walls) {
+void Ant::update(Food *foods, Pheromone* phe, Wall walls) {
 
     // Random acceleration.
     PVector acc = PVector(rand() % 5 - 2, rand() % 5 - 2);
@@ -89,7 +89,7 @@ int Ant::find_food(Food *foods) {
     return 0;
 }
 
-int Ant::find_nest(std::vector<Pheromone*> *phe) {
+int Ant::find_nest(Pheromone* phe) {
 
     // If ant found the nest.
     if (this->position.getX() >= SIZE_W/2 - SIZE_COLONY && this->position.getX() <= SIZE_W/2 + SIZE_COLONY && 
@@ -98,29 +98,7 @@ int Ant::find_nest(std::vector<Pheromone*> *phe) {
         return 180;
     }
 
-    // Add pheromone.
-    bool isNotIn = true;
-    // S'il est deja dedans, on ajoute un depot de 10
-    for (int i = 0; i < (*phe).size(); i++) {
-        if ((int) (*phe)[i]->getPosition().getX() == (int) this->position.getX() && (int) (*phe)[i]->getPosition().getY() == (int) this->position.getY()) {
-            int dep = (*phe)[i]->getDepot();
-            if (dep + 10 > 255) {
-                (*phe)[i]->setDepot(PHE_MAX);
-            } else {
-                (*phe)[i]->setDepot(dep + PHE_INCREASE);
-            }
-            isNotIn = false;
-            break;
-        }
-    }
-    // Sinon on le crée
-    if (isNotIn) {
-        PVector p = PVector(this->position.getX(), this->position.getY());
-        (*phe).push_back(new Pheromone(p, PHE_INIT));
-    }
-
-    
-    
+        
     // Found angle between nest and ants.
  
 
@@ -130,7 +108,7 @@ int Ant::find_nest(std::vector<Pheromone*> *phe) {
 
 }
 
-int Ant::find_pheromone_trail(std::vector<Pheromone*> *phe) {
+int Ant::find_pheromone_trail(Pheromone* phe) {
     return 0;
 }
 

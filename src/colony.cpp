@@ -21,7 +21,7 @@ void Colony::createAnts() {
     ants.push_back(ant);
 }
 
-void Colony::update(sf::RenderWindow *window, Food *foods, Wall walls) {
+void Colony::update(Food *foods, Wall walls) {
 
     // Add new ants which time.
     if (this->nb_ants < NB_ANTS) {
@@ -32,25 +32,23 @@ void Colony::update(sf::RenderWindow *window, Food *foods, Wall walls) {
 
     // Update each ants.
     for (auto ant: getAnts()) {
-		ant->update(foods, &this->pheromones, walls);
-		ant->draw(window);
+		ant->update(foods, &(this->phe), walls);
 	}
     
     // Decrease pheromone trail intensity with time.
-    for (int i = this->pheromones.size()-1; i >= 0; i--) {
-        int dep = this->pheromones[i]->getDepot();
-        dep -= PHE_DECREASE;
-
-        if (dep <= 0) {
-            this->pheromones.erase(this->pheromones.begin()+i);
-        } else {
-            this->pheromones[i]->setDepot(dep);
+    for (int i = 0; i < SIZE_H; i++) {
+        for (int j = 0; j < SIZE_W; j++) {
+            if (this->phe.getPheromone(j, i) > 0) {
+                this->phe.subPheromone(j, i);
+            }
         }
     }
 }
 
 
 void Colony::draw(sf::RenderWindow *window) {
+
+    // Draw circle.
     sf::CircleShape center;
     center.setRadius(SIZE_COLONY);
     center.setPosition(this->colony_center.getX(), this->colony_center.getY());
@@ -59,11 +57,11 @@ void Colony::draw(sf::RenderWindow *window) {
     center.setFillColor(sf::Color::Transparent);
     window->draw(center);
 
+    // Draw ants.
     for (auto ant: ants) {
         ant->draw(window);
     }
 
-    for (auto phe: pheromones) {
-        phe->draw(window);
-    }
+    // draw pheromones.
+    phe.draw(window);
 }

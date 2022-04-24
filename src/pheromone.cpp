@@ -1,13 +1,22 @@
 #include "../include/pheromone.hpp"
 
-Pheromone::Pheromone(const PVector p, const int depot) {
-    this->position = p;
-    this->depot = depot;
+Pheromone::Pheromone() {
+    for (int i = 0; i < SIZE_H; i++) {
+        for (int j = 0; j < SIZE_W; j++) {
+            this->pheromones[i][j] = 0;
+        }
+    }
 }
 
 void Pheromone::draw(sf::RenderWindow *window) {
-    sf::CircleShape phe(PHE_DIFFUSION);
-    phe.setFillColor(sf::Color(255, 0, 0, this->depot));
-    phe.setPosition(this->position.getX(), this->position.getY());
-    window->draw(phe);
+    for (int i = 0; i < SIZE_H; i++) {
+        for (int j = 0; j < SIZE_W; j++) {
+            if (this->pheromones[i][j] > 0) {
+                sf::CircleShape phe(PHE_DIFFUSION);
+                phe.setFillColor(sf::Color(255, 0, 0, this->pheromones[i][j]));
+                phe.setPosition(j, i);
+                window->draw(phe);
+            }
+        }
+    }
 }   

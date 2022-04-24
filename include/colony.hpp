@@ -20,8 +20,7 @@ class Colony {
         // Other.
         void draw(sf::RenderWindow *window);
         void createAnts();
-        void update(sf::RenderWindow *window, Food *foods, Wall walls);
-        static void addPheromone(PVector p, int depot);
+        void update(Food *foods, Wall walls);
 
         // Getter.
         std::vector<Ant*> getAnts() {return this->ants;}
@@ -29,6 +28,6 @@ class Colony {
     private:
         PVector colony_center;
         std::vector<Ant*> ants;
-        std::vector<Pheromone*> pheromones;
+        Pheromone phe;
         int nb_ants;
 };

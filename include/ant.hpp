@@ -31,12 +31,12 @@ class Ant {
 
         // Other.
         void draw(sf::RenderWindow *window);
-        void update(Food *foods, std::vector<Pheromone*> *phe, Wall walls);
+        void update(Food *foods, Pheromone* phe, Wall walls);
         void checkBorder();
         void checkWall(Wall walls);
-        int find_pheromone_trail(std::vector<Pheromone*> *phe);
+        int find_pheromone_trail(Pheromone* phe);
         int find_food(Food *foods);
-        int find_nest(std::vector<Pheromone*> *phe);
+        int find_nest(Pheromone* phe);
 
     
     private:
@@ -44,7 +44,6 @@ class Ant {
 
         PVector position;     // Position.
         PVector velocity;     // Velocity.
-        double angle;         // Which direction to see.
         int sense_angle;      // Sense angle.
         int sense_direction;  // Sense direction. 
         bool isFeed;           // With or Without feed. 

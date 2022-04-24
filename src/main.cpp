@@ -66,9 +66,8 @@ int main(int argc, char const *argv[]) {
 			sf::Vector2i pos = sf::Mouse::getPosition(window);
 			foods.add(pos.x, pos.y);
 		}
-
 		// Update colony.
-		colony.update(&window, &foods, wall);
+		colony.update(&foods, wall);
 
 		// Display FPS.
         count += 1;
