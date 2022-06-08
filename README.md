@@ -44,15 +44,28 @@ end procedure
 
 Nécessité d'avoir une matrice de phéromone => limité les valeurs min et max des phéromones
 
+A chaque tour, la fourmi a la possibilité daller dans 8 directions.
+
 
 ## Pheromone update
 
+$$
+\begin{align}
+    \tau_{xy} = (1 - p) * \tau_{xy} + \sum_{k}^{m}(\Delta\tau_{xy}^{k})
+\end{align}
+$$
 
-Txy = (1 - p) + Txy + Somme(m->k) pow(delta Txy, k)
-Txy: Amount of pheromone on deposit for a state transition xy
-p: Pheromone evaporate coefficient
-m: Number of ants
-pow(delta Txy, k): 
+* $\tau_{xy}$ : Amount of pheromone on deposit for a state transition xy 
+* $p$ : Pheromone evaporate coefficient
+* $m$ : Number of ants
+* $\Delta\tau_{xy}^{k}$ : 
+
+## Find path
+
+    
+
+
+
 
 
 
@@ -71,3 +84,9 @@ Red: Pheromone with food
 
 
 ### Mettre en place un système de hitbox
+
+--------------------------
+
+## TODO
+
+Mettre le depot de pheromone lors du retour a la base

@@ -29,20 +29,37 @@ void Colony::update(Food *foods, Wall walls) {
         this->nb_ants += 1;
     }
 
+    // Pheromone temp.
+    Pheromone* phe_tour = new Pheromone();
+    Pheromone* phe_nb_ants = new Pheromone();
 
-    // Update each ants.
+
+
+    // // Update each ants.
     for (auto ant: getAnts()) {
-		ant->update(foods, &(this->phe), walls);
+		ant->update(foods, &(this->phe), walls, phe_tour, phe_nb_ants);
+
 	}
     
     // Decrease pheromone trail intensity with time.
+    int val = 0;
     for (int i = 0; i < SIZE_H; i++) {
         for (int j = 0; j < SIZE_W; j++) {
-            if (this->phe.getPheromone(j, i) > 0) {
-                this->phe.subPheromone(j, i);
-            }
+            if (phe_nb_ants->getPheromone(j, i) > 0) {
+                val = (1 - PHE_EVAPORATION_COEFFICIENT) * this->phe.getPheromone(j, i) + (phe_tour->getPheromone(j, i) / phe_nb_ants->getPheromone(j, i));
+                val = (val > PHE_MAX) ? 255 : val;
+            } else {
+                val = (1 - PHE_EVAPORATION_COEFFICIENT) * this->phe.getPheromone(j, i);
+            } 
+            this->phe.setPheromone(j, i, val);
         }
     }
+
+    // Desallocate pointer. 
+    free(phe_tour);
+    free(phe_nb_ants);
+
+
 }
 
 
@@ -62,6 +79,6 @@ void Colony::draw(sf::RenderWindow *window) {
         ant->draw(window);
     }
 
-    // draw pheromones.
+    // Draw pheromones.
     phe.draw(window);
 }

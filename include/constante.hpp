@@ -25,12 +25,9 @@
 #define SIZE_FOOD_PIXEL 5               // Size of a pixel food.
 
 // Pheromone information.
-#define PHE_DIFFUSION 3      // Size of the champ.        
+#define PHE_DIFFUSION 3                 // Size of the champ.        
 #define PHE_MAX 255
-#define PHE_INCREASE 2
+#define PHE_INCREASE 50
 #define PHE_DECREASE 1
 #define PHE_INIT 10
-
-
-// PVector constante.
-#define PI 3.14159265
+#define PHE_EVAPORATION_COEFFICIENT 0.01

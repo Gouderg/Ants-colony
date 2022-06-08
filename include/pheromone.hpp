@@ -16,8 +16,9 @@ class Pheromone {
         int getPheromone(const int x, const int y) {return this->pheromones[y][x];}
 
         // Setter.
-        void addPheromone(const int x, const int y) {this->pheromones[y][x] += PHE_INCREASE;}
+        void addPheromone(const int x, const int y, const int value) {this->pheromones[y][x] += value;}
         void subPheromone(const int x, const int y) {this->pheromones[y][x] -= PHE_DECREASE;}
+        void setPheromone(const int x, const int y, const int value) {this->pheromones[y][x] = value;}
 
 
         // Other.

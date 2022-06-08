@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS = -W -Wall -g
+CFLAGS = -W -Wall -g -s
 LDFLAGS = -lsfml-graphics -lsfml-window -lsfml-system
 
 SRC = $(wildcard src/*.cpp)

@@ -193,7 +193,7 @@ double PVector::dist(PVector v1, PVector v2) {
 
 
 // --
-// headings2D : Find the angle forr orientation
+// headings2D : Find the angle for orientation
 // --
 
 double PVector::headings2D() {

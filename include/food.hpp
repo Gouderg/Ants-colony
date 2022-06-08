@@ -15,6 +15,7 @@ class Food {
         // Getter.
         uint8_t getFood(const int x, const int y) {return this->foods[y][x];}
 
+        void setFood(const int x, const int y) {this->foods[y][x] = 0;}
         // Other.
         void add(const int x, const int y);
         void draw(sf::RenderWindow *window);

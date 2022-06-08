@@ -11,25 +11,26 @@ Ant::~Ant() {
 }
 
 
-void Ant::update(Food *foods, Pheromone* phe, Wall walls) {
+void Ant::update(Food *foods, Pheromone* phe_global, Wall walls, Pheromone* phe_tour, Pheromone* phe_nb_ants) {
+
 
     // Random acceleration.
     PVector acc = PVector(rand() % 5 - 2, rand() % 5 - 2);
 
+    // If ants carry food.
+    if (this->isFeed == 1) {
+        
+         acc = find_nest(phe_tour, phe_nb_ants);
+
+    } else {
+        // Search pheromone trail.
+        // this->direction = (this->direction + find_pheromone_trail(phe) + 360) % 360;
+        // Check for food.
+        find_food(foods);
+    }
+
     // Limit acceleration.
     acc.limit(ANT_MAX_FORCE);
-
-
-    // // If ants carry food.
-    // if (this->isFeed == 1) {
-    //     this->direction = (find_nest(phe) + 360 + rand() % 3) % 360;
-    // } else {
-    //     // Search pheromone trail.
-    //     this->direction = (this->direction + find_pheromone_trail(phe) + 360) % 360;
-
-    //     // Look for food.
-    //     this->direction = (this->direction + find_food(foods) + 360) % 360;
-    // }
 
     // Add acceleration to velocity.
     this->velocity.add(acc);
@@ -45,7 +46,10 @@ void Ant::update(Food *foods, Pheromone* phe, Wall walls) {
 
     // Check walls.
     checkWall(walls);
+
+
 }
+
 
 
 void Ant::checkBorder() {
@@ -84,27 +88,39 @@ void Ant::checkWall(Wall walls) {
     }
 }
 
-int Ant::find_food(Food *foods) {
+void Ant::find_food(Food *foods) {
 
-    return 0;
+    int x = this->position.getX() * (SIZE_W / SIZE_FOOD_PIXEL) / SIZE_W;
+    int y = this->position.getY() * (SIZE_H / SIZE_FOOD_PIXEL) / SIZE_H;
+
+    // If ant found food.
+    if (foods->getFood(x, y) == 1) { 
+        foods->setFood(x, y);   // Remove food.
+        this->isFeed = 1;
+        PVector::rotate2D(this->position, 180);
+    }
+
+
 }
 
-int Ant::find_nest(Pheromone* phe) {
+PVector Ant::find_nest(Pheromone* phe_tour, Pheromone* phe_nb_ants) {
 
     // If ant found the nest.
     if (this->position.getX() >= SIZE_W/2 - SIZE_COLONY && this->position.getX() <= SIZE_W/2 + SIZE_COLONY && 
         this->position.getY() >= SIZE_H/2 - SIZE_COLONY && this->position.getY() <= SIZE_H/2 + SIZE_COLONY) {
         this->isFeed = 0;
-        return 180;
+        PVector::rotate2D(this->position, 180);
+        return PVector(0,0);
     }
 
-        
-    // Found angle between nest and ants.
- 
+    // Depose an amout of pheromone.
+    phe_nb_ants->addPheromone(this->position.getX(), this->position.getY(), 1);
+    phe_tour->addPheromone(this->position.getX(), this->position.getY(), PHE_INCREASE);
 
-    // int proba[3] = {-1, 0, 1};
 
-    return atan2(SIZE_H/2 - this->position.getY(), SIZE_W/2 - this->position.getX()) * 180/PI;
+    return seek(PVector(SIZE_W/2, SIZE_H/2));
+    
+    // return atan2(SIZE_H/2 - this->position.getY(), SIZE_W/2 - this->position.getX()) * 180/M_PI;
 
 }
 
@@ -125,6 +141,19 @@ void Ant::draw(sf::RenderWindow *window) {
 
     fourmi.setPosition(position.getX() - ANTS_SIZE/2, position.getY() - ANTS_SIZE/2);
     fourmi.setRotation(this->velocity.headings2D());
-    fourmi.setFillColor(sf::Color::Yellow);
+    if (this->isFeed) {
+        fourmi.setFillColor(sf::Color::Magenta);
+    } else {
+        fourmi.setFillColor(sf::Color::Yellow);
+    }
     window->draw(fourmi);
+}
+
+PVector Ant::seek(PVector target) {
+    PVector force = PVector::sub(target, this->position);
+
+    force.setMag(ANT_MAX_SPEED);
+    force.sub(this->velocity);
+    force.limit(ANT_MAX_FORCE);
+    return force;
 }

@@ -31,16 +31,17 @@ class Ant {
 
         // Other.
         void draw(sf::RenderWindow *window);
-        void update(Food *foods, Pheromone* phe, Wall walls);
+        void update(Food *foods, Pheromone* phe_global, Wall walls, Pheromone* phe_tour, Pheromone* phe_nb_ants);
+
         void checkBorder();
         void checkWall(Wall walls);
         int find_pheromone_trail(Pheromone* phe);
-        int find_food(Food *foods);
-        int find_nest(Pheromone* phe);
+        void find_food(Food *foods);
+        PVector find_nest(Pheromone* phe_tour, Pheromone* phe_nb_ants);
+        PVector seek(PVector target);  // Follow a target.
 
     
     private:
-        static const int max_angle = 180;
 
         PVector position;     // Position.
         PVector velocity;     // Velocity.
