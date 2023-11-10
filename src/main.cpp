@@ -30,7 +30,7 @@ int main(int argc, char const *argv[]) {
 	sf::ContextSettings settings;
 	settings.antialiasingLevel = 8;
 	sf::RenderWindow window(sf::VideoMode(SIZE_W,SIZE_H), "Ants Colony", sf::Style::Default, settings);
-	window.setFramerateLimit(60);
+	window.setFramerateLimit(0);
 
 	// Initialisation affichage fps.
 	sf::Font font;

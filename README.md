@@ -24,13 +24,6 @@ But: Trouver de la nourriture
 Quand une fourmi trouve de la nourriture, elle rentre en laissant des phéromones derrières elles.
 La quantité de phéromones dépends de la quantité et de la qualité de nourriture 
 
-https://www.youtube.com/watch?v=783ZtAF4j5g
-https://www.youtube.com/watch?v=yZ1rSASM2Rg
-https://www.youtube.com/watch?v=xpyKmjJuqhk
-https://mat.uab.cat/~alseda/MasterOpt/ACO_Intro.pdf
-
-https://softologyblog.wordpress.com/2020/03/21/ant-colony-simulations
-http://nicolasmonneret.free.fr/utbm/IN52/Rapport%20IN52-IN54.pdf
 
 ## Algorithm 
 
@@ -83,10 +76,33 @@ Blue: Pheromone without food
 Red: Pheromone with food
 
 
-### Mettre en place un système de hitbox
 
---------------------------
 
 ## TODO
 
 Mettre le depot de pheromone lors du retour a la base
+
+
+## Bibliographie
+
+[Optimisation par essaims paticulaires][1], Wikipedia
+
+[How the Ant Colony Optimization algorithm works][2], Youtube, Ali Mirjalili
+
+[Ant Colony Simulation with 5000 ants (2d).][3], Youtube, Zoom Horizon
+
+[Ant Colony Optimization][4], Youtube, Jeff Lettman
+
+[Ant colony Optimization Algorithms : Introduction and Beyond][5], Pdf, Anirudh Shekhawat
+
+[Ant Colony Simulations][6], Blog, softologyblog
+
+[Algorithme des fourmis appliqué à la détection et au suivi de contours dans une image][7], PDF, Franck GECHTER
+
+[1]: (https://fr.wikipedia.org/wiki/Optimisation_par_essaims_particulaires)
+[2]: (https://www.youtube.com/watch?v=783ZtAF4j5g)
+[3]: (https://www.youtube.com/watch?v=yZ1rSASM2Rg)
+[4]: (https://www.youtube.com/watch?v=xpyKmjJuqhk)
+[5]: (https://mat.uab.cat/~alseda/MasterOpt/ACO_Intro.pdf)
+[6]: (https://softologyblog.wordpress.com/2020/03/21/ant-colony-simulations)
+[7]: (http://nicolasmonneret.free.fr/utbm/IN52/Rapport%20IN52-IN54.pdf)
